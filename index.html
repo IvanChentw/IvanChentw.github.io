@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	
+    <title>陳暐翰 (Wei-Han Chen)</title>
+    <link rel="icon" href="/favicon.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <style type="text/css">
+      html {
+        background: -webkit-radial-gradient(circle,white,#9ccaf5);
+        background: -o-radial-gradient(circle,white,#9ccaf5);
+        background: -moz-radial-gradient(circle,white,#9ccaf5);
+        background: radial-gradient(circle,white,#9ccaf5);
+      }
+
+      body {
+        width: 80%;
+        min-width: 700px;
+        margin: 0 auto;
+        background-color: transparent;
+        padding: 20px 20px 20px 20px;
+      }
+
+      h1 {
+        font-size: 56px;
+        font-family: 'Zen Dots', cursive;
+        text-align: center;
+        letter-spacing: 4px;
+        padding: 20px 0;
+        color: #ff6d47;
+        text-shadow: 4px 4px 2px #ffa081;
+      }
+
+      h2 {
+		font-size: 36px;
+		font-family: 'Zen Dots', cursive;
+		margin: 0;
+		color: #195d81;
+		text-shadow: 2px 2px 1px #19bdd0;
+	  }
+	  
+      p, li {
+        font-size: 25px;
+        line-height: 1.2;
+      }
+
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+
+      a:link {
+		color: green;
+		background-color: transparent;
+		text-decoration: none;
+	  }
+
+	  a:visited {
+		color: blue;
+		background-color: transparent;
+		text-decoration: none;
+	  }
+
+	  a:hover {
+		color: red;
+		background-color: transparent;
+		text-decoration: underline;
+	  }
+
+	  a:active {
+		color: yellow;
+		background-color: transparent;
+		text-decoration: underline;
+	  }
+
+      span {
+        font-size: 18px;
+        text-align: right;
+        display:block;
+      }
+
+      audio {width: 70%;}
+    </style>
+
+    <script>
+      function time(){
+        var now = new Date();
+        var date = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
+		
+        <!--排版用---->
+		var hour = now.getHours();
+        hour = hour < 10 ? '0'+hour : hour;
+        var minute = now.getMinutes();
+        minute = minute < 10 ? '0'+minute : minute;
+        var second = now.getSeconds();
+        second = second < 10 ? '0'+second : second;
+		
+        var time = hour + ":" + minute + ":" + second;
+        var dateTime = date+' '+time;
+		
+        document.getElementById("date").innerHTML = dateTime;
+        setTimeout("time()", 1000);
+      }
+    </script>
+  </head>
+  
+  <body onload=time()>
+    <h1>Wei-Han Chen (Ivan)</h1>
+
+    <img src="me.jpeg" alt="Me" title="Ivan" width="250px">
+
+    <h2><strong>Self Introduction</strong></h2>
+
+    <p>
+      Greetings to everyone. My name is Wei-Han Chen (Ivan), and I am a senior student of <a href="https://www.ntu.edu.tw/">National Taiwan University</a>. 
+      I am major in <a href="https://web.ee.ntu.edu.tw/">Department of Electrical Engineering</a> and minor in <a href="https://www.ch.ntu.edu.tw/Default.html">Department of Chemistry</a>. 
+      I was graduated from <a href="https://www2.ck.tp.edu.tw/"> Taipei Municipal Jianguo High School</a> in 2018.
+    </p>
+	
+	<br>
+    <span><audio autoplay="autoplay" controls="controls" loop="loop" src="rainy_night.mp3">Your browser does not support the audio element.</audio></span>
+	
+    <h2><strong>My Personal Hobbies</strong></h2>
+    <ol>
+	  <li>Listen latest music videos on <a href="https://www.youtube.com/">YouTube</a>.</li>
+      <li>Play piano, espically <a href="https://www.youtube.com/watch?v=OoZ-Hx_RxbM">Chopin's</a> Nocturnes.</li>
+      <li>Play video games, such as <a href="https://www.minecraft.net/zh-hant/">Minecraft</a>.</li>
+    </ol>
+
+	<br>
+    <span id="date"></span>
+  
+  </body>
+</html>
