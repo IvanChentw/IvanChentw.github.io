@@ -2,20 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-	
     <title>陳暐翰 (Wei-Han Chen)</title>
+	
     <link rel="icon" href="/favicon.png">
-
     <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <style type="text/css">
 	html {
-		
 		background: radial-gradient(circle,white,#f7c281);
 	}
 
 	body {
-		width: 80%;
+		width: 70%;
 		min-width: 700px;
 		margin: 0 auto;
 		background-color: transparent;
@@ -37,12 +35,12 @@
 		color: #195d81;
 		text-shadow: 2px 2px 1px #19bdd0;
 	}
-	  
-	p, li {
-		font-size: 25px;
-		line-height: 1.2;
-	}
 
+	audio {  
+		height: 30px ;
+		width: 400px ;
+	}
+	
 	img {
 		display: block;
 		margin: 0 auto;
@@ -77,11 +75,12 @@
 		text-align: right;
 		display:block;
 	}
-
-	audio {  
-		height: 30px ;
-		width: 400px ;
+	  
+	p, li {
+		font-size: 25px;
+		line-height: 1.2;
 	}
+	
     </style>
 
     <script>
@@ -92,14 +91,15 @@
         <!--排版用---->
 		var hour = now.getHours();
         hour = hour < 10 ? '0'+hour : hour;
+		
         var minute = now.getMinutes();
         minute = minute < 10 ? '0'+minute : minute;
+		
         var second = now.getSeconds();
         second = second < 10 ? '0'+second : second;
 		
         var time = hour + ":" + minute + ":" + second;
         var dateTime = date+' '+time;
-		
         document.getElementById("date").innerHTML = dateTime;
         setTimeout("time()", 1000);
       }
@@ -109,7 +109,7 @@
   <body onload=time()>
     <h1>Wei-Han Chen (Ivan)</h1>
 
-    <img src="me.jpeg" alt="Me" title="Ivan" width="250px">
+    <img src="me.jpeg" alt="Me" title="Ivan" width="350px">
 
     <h2><strong>Self Introduction</strong></h2>
 
