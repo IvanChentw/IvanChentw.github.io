@@ -1,136 +1,215 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>陳暐翰 (Wei-Han Chen)</title>
-	
-    <link rel="icon" href="/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <style type="text/css">
-	html {
-		background: radial-gradient(circle,white,#f7c281);
-	}
-
-	body {
-		width: 70%;
-		min-width: 700px;
-		margin: 0 auto;
-		background-color: transparent;
-		padding: 20px 20px 20px 20px;
-	}
-
-	h1 {
-		font-size: 56px;
-		font-family: 'Zen Dots', cursive;
-		text-align: center;
-		color: #ff6d47;
-		text-shadow: 4px 4px 2px #ffa081;
-	}
-
-	h2 {
-		font-size: 36px;
-		font-family: 'Zen Dots', cursive;
-		margin: 0;
-		color: #195d81;
-		text-shadow: 2px 2px 1px #19bdd0;
-	}
-
-	audio {  
-		height: 30px ;
-		width: 400px ;
-	}
-	
-	img {
-		display: block;
-		margin: 0 auto;
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wei-Han Chen (Ivan) · SerDes &amp; Analog IC Design</title>
+  <meta name="description" content="Wei-Han Chen (Ivan), SerDes and analog IC design engineer at MediaTek. High-speed SerDes clocking, PLLs and fractional output dividers.">
+  <link rel="icon" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf9;
+      --card: #ffffff;
+      --text: #1c1917;
+      --muted: #57534e;
+      --faint: #a8a29e;
+      --line: #e7e5e4;
+      --accent: #0f5f8a;
     }
-
-    a:link {
-		color: green;
-		background-color: transparent;
-		text-decoration: none;
-	}
-
-	a:visited {
-		color: blue;
-		background-color: transparent;
-		text-decoration: none;
-	}
-
-	a:hover {
-		color: red;
-		background-color: transparent;
-		text-decoration: underline;
-	}
-
-	a:active {
-		color: yellow;
-		background-color: transparent;
-		text-decoration: underline;
-	}
-
-    span {
-		font-size: 18px;
-		text-align: right;
-		display:block;
-	}
-	  
-	p, li {
-		font-size: 25px;
-		line-height: 1.2;
-	}
-	
-    </style>
-
-    <script>
-      function time(){
-        var now = new Date();
-        var date = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
-		
-        <!--排版用---->
-		var hour = now.getHours();
-        hour = hour < 10 ? '0'+hour : hour;
-		
-        var minute = now.getMinutes();
-        minute = minute < 10 ? '0'+minute : minute;
-		
-        var second = now.getSeconds();
-        second = second < 10 ? '0'+second : second;
-		
-        var time = hour + ":" + minute + ":" + second;
-        var dateTime = date+' '+time;
-        document.getElementById("date").innerHTML = dateTime;
-        setTimeout("time()", 1000);
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #121212;
+        --card: #1a1a1a;
+        --text: #e7e5e4;
+        --muted: #a8a29e;
+        --faint: #78716c;
+        --line: #2e2e2e;
+        --accent: #6cb6e0;
       }
-    </script>
-  </head>
-  
-  <body onload=time()>
-    <h1>Wei-Han Chen (Ivan)</h1>
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    main { max-width: 760px; margin: 0 auto; padding: 64px 24px 48px; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    <img src="me.jpeg" alt="Me" title="Ivan" width="350px">
+    header { display: flex; gap: 32px; align-items: center; margin-bottom: 56px; }
+    header img {
+      width: 148px; height: 148px; border-radius: 50%;
+      object-fit: cover; object-position: center 20%;
+      flex-shrink: 0; border: 1px solid var(--line);
+    }
+    h1 { font-size: 32px; font-weight: 700; margin: 0 0 4px; letter-spacing: -0.02em; }
+    h1 .zh { font-weight: 500; color: var(--muted); font-size: 22px; margin-left: 6px; }
+    .role { font-size: 17px; color: var(--muted); margin: 0 0 14px; }
+    .links { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 15px; margin: 0; padding: 0; list-style: none; }
 
-    <h2><strong>Self Introduction</strong></h2>
+    section { margin-bottom: 48px; }
+    h2 {
+      font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--faint); margin: 0 0 18px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+    }
+    p { margin: 0 0 12px; }
 
+    .entry { margin-bottom: 28px; }
+    .entry:last-child { margin-bottom: 0; }
+    .entry-head { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; flex-wrap: wrap; }
+    .entry-title { font-weight: 600; font-size: 17px; }
+    .entry-date { color: var(--faint); font-size: 14px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .entry-sub { color: var(--muted); font-size: 15px; margin-bottom: 6px; }
+    ul { margin: 6px 0 0; padding-left: 20px; }
+    li { margin-bottom: 4px; }
+    li::marker { color: var(--faint); }
+
+    .pub { padding-left: 14px; border-left: 2px solid var(--line); }
+    .pub-title { font-weight: 600; }
+    .pub-meta { color: var(--muted); font-size: 15px; }
+    .me { text-decoration: underline; text-underline-offset: 3px; }
+
+    .skills { display: grid; grid-template-columns: 150px 1fr; gap: 8px 20px; margin: 0; }
+    .skills dt { color: var(--muted); font-size: 15px; }
+    .skills dd { margin: 0; }
+
+    footer { color: var(--faint); font-size: 13px; padding-top: 24px; border-top: 1px solid var(--line); }
+
+    @media (max-width: 600px) {
+      main { padding-top: 40px; }
+      header { flex-direction: column; text-align: center; gap: 20px; }
+      header img { width: 128px; height: 128px; }
+      .links { justify-content: center; }
+      h1 .zh { display: block; margin: 2px 0 0; }
+      .skills { grid-template-columns: 1fr; gap: 2px; }
+      .skills dd { margin-bottom: 10px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <header>
+    <img src="me.jpeg" alt="Wei-Han Chen">
+    <div>
+      <h1>Wei-Han Chen <span class="zh">陳暐翰</span></h1>
+      <p class="role">SerDes &amp; Analog IC Design Engineer, MediaTek</p>
+      <ul class="links">
+        <li><a href="mailto:weihanchentw@gmail.com">weihanchentw@gmail.com</a></li>
+        <li><a href="https://github.com/IvanChentw">GitHub</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section>
+    <h2>About</h2>
     <p>
-      Greetings to everyone. My name is Wei-Han Chen (Ivan), and I am a senior student of <a href="https://www.ntu.edu.tw/">National Taiwan University</a>. 
-      I am major in <a href="https://web.ee.ntu.edu.tw/">Department of Electrical Engineering</a> and minor in <a href="https://www.ch.ntu.edu.tw/Default.html">Department of Chemistry</a>. 
-      I was graduated from <a href="https://www2.ck.tp.edu.tw/"> Taipei Municipal Jianguo High School</a> in 2018.
+      I design clocking circuits for high-speed wireline transceivers at MediaTek in Hsinchu, Taiwan.
+      My work covers TX serializer skew calibration, multi-phase PLL clock alignment, and RX clock
+      distribution for 224-Gb/s and 320-Gb/s SerDes in TSMC 3-nm.
     </p>
-	
-	<br>
-    <span><audio autoplay="autoplay" controls="controls" loop="loop" src="rainy_night.mp3">Your browser does not support the audio element.</audio></span>
-	
-    <h2><strong>My Personal Hobbies</strong></h2>
-    <ol>
-	  <li>Listen latest music videos on <a href="https://www.youtube.com/">YouTube</a>.</li>
-      <li>Play piano, espically <a href="https://www.youtube.com/watch?v=OoZ-Hx_RxbM">Chopin's</a> Nocturnes.</li>
-      <li>Play video games, such as <a href="https://www.minecraft.net/zh-hant/">Minecraft</a>.</li>
-    </ol>
+    <p>
+      I received my M.S. and B.S. from National Taiwan University. My graduate research with
+      Prof. Tsung-Hsien Lin focused on frequency synthesis, specifically low-jitter fractional output
+      dividers with digital background calibration.
+    </p>
+  </section>
 
-	<br>
-    <span id="date"></span>
-  
-  </body>
+  <section>
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">MediaTek Inc.</span>
+        <span class="entry-date">Mar. 2025 – Present</span>
+      </div>
+      <div class="entry-sub">SerDes &amp; Analog IC Design Engineer · Hsinchu</div>
+      <ul>
+        <li>Skew-calibration circuit for a 64-to-1 serializer in a 320-Gb/s SerDes transmitter (TSMC 3 nm).</li>
+        <li>Clock-skew correction logic for 32-GHz multi-phase PLL clocks to reduce phase mismatch and improve inter-lane timing alignment.</li>
+        <li>Receiver clock-divider path for a 224-Gb/s SerDes (TSMC 3 nm) generating multi-phase, frequency-divided clocks.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Light-Clock Technology</span>
+        <span class="entry-date">Sep. 2022 – Jan. 2025</span>
+      </div>
+      <div class="entry-sub">Mixed-Signal Circuit Design Intern (Co-op) · Taipei</div>
+      <ul>
+        <li>Two programmable low-jitter PLLs targeting the kHz and MHz ranges.</li>
+        <li>Integrated the PLLs into a dual-MEMS ASIC and verified the digital control logic.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Research</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">5-GHz Fractional Output Divider with Segmented-TDC Background Calibration</span>
+      </div>
+      <div class="entry-sub">Electronic Research IC Lab, NTU · Advisor: Prof. Tsung-Hsien Lin</div>
+      <ul>
+        <li>Area-efficient segmented TDC that quantizes time intervals for DTC background calibration.</li>
+        <li>TSMC 90 nm; 2.7–357 MHz output range with 25-Hz frequency resolution.</li>
+        <li>Measured jitter FoM of −248.1 dB and jitter-area FoM of −264.9 dB.</li>
+        <li>Silver Medal, Macronix Golden Silicon Award.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Publication</h2>
+    <div class="pub">
+      <div class="pub-title">
+        <a href="https://ieeexplore.ieee.org/search/searchresult.jsp?queryText=An%20Area-Efficient%20Low-Jitter%20Fractional%20Output%20Divider%20With%20Replica-DTC-Free%20Background%20Calibration">An Area-Efficient Low-Jitter Fractional Output Divider With Replica-DTC-Free Background Calibration</a>
+      </div>
+      <div>C.-Y. Lin, <span class="me">W.-H. Chen</span>, Y.-T. Hung, T.-J. Wang, and T.-H. Lin</div>
+      <div class="pub-meta"><em>IEEE Journal of Solid-State Circuits</em>, vol. 59, no. 11, pp. 3705–3715, Nov. 2024.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">M.S., Electronics Engineering (ICS)</span>
+        <span class="entry-date">2022 – 2025</span>
+      </div>
+      <div class="entry-sub">National Taiwan University · GPA 4.26/4.30</div>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">B.S., Electrical Engineering</span>
+        <span class="entry-date">2018 – 2022</span>
+      </div>
+      <div class="entry-sub">National Taiwan University · GPA 4.26/4.30, ranked 4/196 · Presidential Award ×5</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <dl class="skills">
+      <dt>Circuit design</dt><dd>High-speed SerDes TX/RX clocking, frequency synthesizers (PLL, FOD)</dd>
+      <dt>Tools</dt><dd>Cadence Virtuoso, Cadence AMS Designer, Simulink</dd>
+      <dt>Programming</dt><dd>Python, MATLAB</dd>
+      <dt>Languages</dt><dd>Mandarin (native), English (TOEIC 925)</dd>
+    </dl>
+  </section>
+
+  <footer>© <span id="y">2026</span> Wei-Han Chen</footer>
+
+</main>
+<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
 </html>
